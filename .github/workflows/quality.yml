@@ -1,0 +1,106 @@
+name: Quality gate (ruff + mypy + pytest)
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+    branches: ['**']
+
+jobs:
+  quality:
+    name: Phase 6 D-14 four-command suite (uv sync → ruff → mypy → pytest)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.12 (matches pyproject requires-python floor)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+
+      - name: uv sync (install project + dev deps)
+        run: uv sync
+
+      - name: ruff check (lint)
+        run: uv run ruff check
+
+      - name: ruff format --check (style)
+        run: uv run ruff format --check .
+
+      - name: mypy (type check)
+        run: uv run mypy .
+
+      - name: pytest (full test suite, zero-network policy)
+        run: uv run pytest
+
+  frontend-check:
+    name: Phase 10 frontend suite (pnpm install --frozen-lockfile → lint → test)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 20.19 (Vite 7 floor — matches frontend/package.json engines.node)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.19'
+
+      - name: Install pnpm 10
+        uses: pnpm/action-setup@v4
+        with:
+          version: '10'
+          run_install: false
+
+      - name: pnpm install (frozen lockfile — PKG-01 reproducibility gate)
+        run: pnpm install --frozen-lockfile
+
+      - name: pnpm lint (eslint + prettier --check; D-31 — no autofix in CI, mirrors ruff check)
+        run: pnpm lint
+
+      - name: pnpm test (vitest run — non-watch; D-30 per-plan unit tests)
+        run: pnpm test
+
+      - name: Generated types file gate (PKG-03 — file-exists + key-types check; live-regenerate-and-diff is a Phase 11 follow-up per CONTEXT D-04)
+        run: |
+          if [ -f src/api/types.ts ]; then
+            echo "frontend/src/api/types.ts present — running PKG-03 content gate"
+            grep -q "TraceEvent" src/api/types.ts || (echo "::error::frontend/src/api/types.ts missing TraceEvent — PKG-03 stale" && exit 1)
+            grep -q "ConfigView" src/api/types.ts || (echo "::error::frontend/src/api/types.ts missing ConfigView — PKG-03 stale" && exit 1)
+            grep -q "StatsSnapshotEmpty" src/api/types.ts || (echo "::error::frontend/src/api/types.ts missing StatsSnapshotEmpty — PKG-03 stale" && exit 1)
+            grep -q "StatsSnapshotPopulated" src/api/types.ts || (echo "::error::frontend/src/api/types.ts missing StatsSnapshotPopulated — PKG-03 stale" && exit 1)
+          else
+            echo "frontend/src/api/types.ts not yet present — gate is a no-op until 10-02 lands the generated file"
+          fi
+        shell: bash
+
+      - name: Build SPA (Phase 11 / Plan 03 — produce frontend/dist for SEC-02 gate + Plan 04 E2E)
+        run: pnpm build
+
+      - name: SEC-02 — secret-leak grep gate (sk- regex matches corethread/logging_config.py:50 _SK_PATTERN exactly per D-17)
+        run: |
+          if grep -rE 'sk-[a-zA-Z0-9_-]{20,}' dist/assets/; then
+            echo "::error::OpenAI key detected in SPA bundle (SEC-02)"
+            exit 1
+          fi
+        shell: bash
+
+  secret-scan:
+    name: Secret scan (gitleaks)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITLEAKS_CONFIG: .gitleaks.toml

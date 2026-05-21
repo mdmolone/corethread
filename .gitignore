@@ -1,0 +1,49 @@
+# Secrets
+config.yaml
+/config.*.yaml
+!config.yaml.example
+*.env
+.env
+.env.*
+
+# Local run artifacts
+outputs/
+.codex-run/
+.planning/
+*.log
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.pptx
+
+# Venv / packaging
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# uv / pip caches
+uv.lock.bak
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# IDE
+.claude/
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Phase 10 frontend workspace
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/coverage/
+# tsc -b incremental build state (emitted by `tsc -b` even with noEmit:true; not source)
+frontend/*.tsbuildinfo

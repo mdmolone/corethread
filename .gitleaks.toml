@@ -1,0 +1,8 @@
+[allowlist]
+description = "CoreThread deliberate fake test keys and private planning archive"
+paths = [
+  '''^\.planning/''',
+]
+regexes = [
+  '''sk-(test|leak|marker|inline|stub|libleak|bearer|argleak|stleak|foo|your|replace|1234567890)[A-Za-z0-9_-]*''',
+]

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-label="CoreThread trace view screenshot">
+  <rect width="960" height="420" fill="#0b0b0d"/>
+  <text x="28" y="42" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">CoreThread</text>
+  <text x="735" y="42" fill="#f8fafc" font-family="Arial, sans-serif" font-size="15">Config</text>
+  <rect x="805" y="12" width="78" height="42" rx="6" fill="#17171a"/>
+  <text x="824" y="39" fill="#ffffff" font-family="Arial, sans-serif" font-size="15" font-weight="700">Traces</text>
+  <text x="902" y="42" fill="#f8fafc" font-family="Arial, sans-serif" font-size="15">Stats</text>
+  <line x1="0" y1="76" x2="960" y2="76" stroke="#242428"/>
+  <g font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">
+    <rect x="28" y="110" width="112" height="36" rx="6" fill="#101114" stroke="#2b2d31"/>
+    <text x="46" y="134">pivoted: any</text>
+    <rect x="158" y="110" width="100" height="36" rx="6" fill="#101114" stroke="#2b2d31"/>
+    <text x="181" y="134">model: any</text>
+    <rect x="276" y="110" width="154" height="36" rx="6" fill="#101114" stroke="#2b2d31"/>
+    <text x="294" y="134">confidence: any</text>
+  </g>
+  <rect x="28" y="174" width="904" height="72" rx="6" fill="#0d0d10" stroke="#292a2e"/>
+  <rect x="28" y="174" width="4" height="72" fill="#facc15"/>
+  <text x="48" y="205" fill="#cbd5e1" font-family="Consolas, monospace" font-size="14">a82f04c1</text>
+  <rect x="150" y="188" width="72" height="28" rx="14" fill="#2f3338"/>
+  <text x="169" y="207" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="13" font-weight="700">pivoted</text>
+  <text x="246" y="207" fill="#ffffff" font-family="Arial, sans-serif" font-size="16" font-weight="700">llama3.1:8b -> gpt-4o</text>
+  <text x="850" y="207" fill="#ffffff" font-family="Arial, sans-serif" font-size="14">conf 0.42</text>
+  <rect x="48" y="224" width="530" height="10" rx="5" fill="#3b82f6"/>
+  <rect x="578" y="224" width="300" height="10" rx="5" fill="#f59e0b"/>
+  <rect x="878" y="224" width="32" height="10" rx="5" fill="#a855f7"/>
+  <rect x="28" y="260" width="904" height="72" rx="6" fill="#0d0d10" stroke="#292a2e"/>
+  <rect x="28" y="260" width="4" height="72" fill="#60a5fa"/>
+  <text x="48" y="291" fill="#cbd5e1" font-family="Consolas, monospace" font-size="14">f19b65dd</text>
+  <rect x="150" y="274" width="78" height="28" rx="14" fill="#111827" stroke="#374151"/>
+  <text x="171" y="293" fill="#ffffff" font-family="Arial, sans-serif" font-size="13" font-weight="700">accepted</text>
+  <text x="246" y="293" fill="#ffffff" font-family="Arial, sans-serif" font-size="16" font-weight="700">llama3.1:8b</text>
+  <text x="850" y="293" fill="#ffffff" font-family="Arial, sans-serif" font-size="14">conf 0.91</text>
+  <rect x="48" y="310" width="255" height="10" rx="5" fill="#3b82f6"/>
+  <rect x="303" y="310" width="607" height="10" rx="5" fill="#f59e0b"/>
+</svg>

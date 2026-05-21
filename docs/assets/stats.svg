@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-label="CoreThread stats view screenshot">
+  <rect width="960" height="420" fill="#0b0b0d"/>
+  <text x="28" y="42" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">CoreThread</text>
+  <text x="728" y="42" fill="#f8fafc" font-family="Arial, sans-serif" font-size="15">Config</text>
+  <text x="806" y="42" fill="#f8fafc" font-family="Arial, sans-serif" font-size="15">Traces</text>
+  <rect x="882" y="12" width="58" height="42" rx="6" fill="#17171a"/>
+  <text x="897" y="39" fill="#ffffff" font-family="Arial, sans-serif" font-size="15" font-weight="700">Stats</text>
+  <line x1="0" y1="76" x2="960" y2="76" stroke="#242428"/>
+  <g font-family="Arial, sans-serif">
+    <rect x="28" y="106" width="198" height="110" rx="6" fill="#101114" stroke="#2b2d31"/>
+    <text x="48" y="140" fill="#94a3b8" font-size="13">pivot rate</text>
+    <text x="48" y="184" fill="#ffffff" font-size="38" font-weight="700">38%</text>
+    <rect x="246" y="106" width="198" height="110" rx="6" fill="#101114" stroke="#2b2d31"/>
+    <text x="266" y="140" fill="#94a3b8" font-size="13">avg confidence</text>
+    <text x="266" y="184" fill="#ffffff" font-size="38" font-weight="700">0.72</text>
+    <rect x="464" y="106" width="198" height="110" rx="6" fill="#101114" stroke="#2b2d31"/>
+    <text x="484" y="140" fill="#94a3b8" font-size="13">frontier calls</text>
+    <text x="484" y="184" fill="#ffffff" font-size="38" font-weight="700">12</text>
+    <rect x="682" y="106" width="250" height="110" rx="6" fill="#101114" stroke="#2b2d31"/>
+    <text x="702" y="140" fill="#94a3b8" font-size="13">est. saved</text>
+    <text x="702" y="184" fill="#ffffff" font-size="38" font-weight="700">$4.18</text>
+    <rect x="28" y="244" width="426" height="132" rx="6" fill="#101114" stroke="#2b2d31"/>
+    <text x="48" y="278" fill="#ffffff" font-size="16" font-weight="700">Confidence histogram</text>
+    <rect x="60" y="336" width="38" height="20" fill="#3b82f6"/>
+    <rect x="112" y="314" width="38" height="42" fill="#3b82f6"/>
+    <rect x="164" y="292" width="38" height="64" fill="#3b82f6"/>
+    <rect x="216" y="274" width="38" height="82" fill="#3b82f6"/>
+    <rect x="268" y="302" width="38" height="54" fill="#3b82f6"/>
+    <rect x="320" y="326" width="38" height="30" fill="#3b82f6"/>
+    <rect x="474" y="244" width="458" height="132" rx="6" fill="#101114" stroke="#2b2d31"/>
+    <text x="494" y="278" fill="#ffffff" font-size="16" font-weight="700">Pivot reasons</text>
+    <rect x="494" y="310" width="280" height="18" rx="9" fill="#f59e0b"/>
+    <rect x="494" y="340" width="140" height="18" rx="9" fill="#a855f7"/>
+  </g>
+</svg>

@@ -1,0 +1,62 @@
+# LM Studio local + LM Studio judge + OpenAI frontier.
+local:
+  kind: lmstudio
+  base_url: http://localhost:1234/v1
+  model: meta/llama-3.1-8b-instruct
+  num_ctx_default: 8192
+  num_ctx_overrides: {}
+judge:
+  model: qwen2.5-7b-instruct
+  # Optional: override the judge system prompt. Keep the JSON output contract.
+  # prompt: |
+  #   You are a strict quality judge...
+frontier:
+  api_key_env: OPENAI_API_KEY
+  base_url: https://api.openai.com/v1
+  model: gpt-4o
+  max_tokens: 512
+model_profiles:
+  local-lmstudio:
+    provider: lmstudio
+    base_url: http://localhost:1234/v1
+    model: meta/llama-3.1-8b-instruct
+    temperature: 0.2
+    timeout_s: 120
+    num_ctx_default: 8192
+    num_ctx_overrides: {}
+  judge-lmstudio:
+    provider: lmstudio
+    base_url: http://localhost:1234/v1
+    model: qwen2.5-7b-instruct
+    temperature: 0
+    timeout_s: 30
+    num_ctx_default: 8192
+    num_ctx_overrides: {}
+  frontier-openai:
+    provider: openai
+    base_url: https://api.openai.com/v1
+    model: gpt-4o
+    api_key_env: OPENAI_API_KEY
+    max_tokens: 512
+    timeout_s: 120
+role_profiles:
+  local: local-lmstudio
+  judge: judge-lmstudio
+  frontier: frontier-openai
+routing:
+  threshold: 0.7
+  constraint_prompt: "Be concise. Limit your answer to a single short paragraph unless the user explicitly asks for more detail."
+ui:
+  theme: system
+privacy:
+  capture_transcripts: false
+  transcript_max: 25
+controls:
+  requests_per_minute: null
+  daily_request_quota: null
+  daily_token_quota: null
+  daily_cost_quota_usd: null
+  pricing: {}
+  audit_enabled: false
+  audit_path: outputs/audit.jsonl
+  audit_include_request_body: false

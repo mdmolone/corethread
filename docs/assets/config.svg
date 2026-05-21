@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-label="CoreThread config view screenshot">
+  <rect width="960" height="420" fill="#0b0b0d"/>
+  <text x="28" y="42" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">CoreThread</text>
+  <rect x="724" y="12" width="74" height="42" rx="6" fill="#17171a"/>
+  <text x="742" y="39" fill="#ffffff" font-family="Arial, sans-serif" font-size="15" font-weight="700">Config</text>
+  <text x="820" y="42" fill="#f8fafc" font-family="Arial, sans-serif" font-size="15">Traces</text>
+  <text x="898" y="42" fill="#f8fafc" font-family="Arial, sans-serif" font-size="15">Stats</text>
+  <line x1="0" y1="76" x2="960" y2="76" stroke="#242428"/>
+  <g font-family="Arial, sans-serif">
+    <text x="28" y="118" fill="#ffffff" font-size="20" font-weight="700">Model roles</text>
+    <rect x="28" y="140" width="280" height="88" rx="6" fill="#101114" stroke="#2b2d31"/>
+    <text x="48" y="172" fill="#94a3b8" font-size="13">local</text>
+    <text x="48" y="202" fill="#ffffff" font-size="18" font-weight="700">local-ollama</text>
+    <rect x="340" y="140" width="280" height="88" rx="6" fill="#101114" stroke="#2b2d31"/>
+    <text x="360" y="172" fill="#94a3b8" font-size="13">judge</text>
+    <text x="360" y="202" fill="#ffffff" font-size="18" font-weight="700">judge-ollama</text>
+    <rect x="652" y="140" width="280" height="88" rx="6" fill="#101114" stroke="#2b2d31"/>
+    <text x="672" y="172" fill="#94a3b8" font-size="13">frontier</text>
+    <text x="672" y="202" fill="#ffffff" font-size="18" font-weight="700">frontier-openai</text>
+    <text x="28" y="274" fill="#ffffff" font-size="20" font-weight="700">Privacy</text>
+    <rect x="28" y="296" width="280" height="76" rx="6" fill="#101114" stroke="#2b2d31"/>
+    <text x="48" y="328" fill="#94a3b8" font-size="13">transcripts</text>
+    <text x="48" y="354" fill="#ffffff" font-size="18" font-weight="700">disabled</text>
+    <rect x="340" y="296" width="280" height="76" rx="6" fill="#101114" stroke="#2b2d31"/>
+    <text x="360" y="328" fill="#94a3b8" font-size="13">theme</text>
+    <text x="360" y="354" fill="#ffffff" font-size="18" font-weight="700">system</text>
+    <rect x="652" y="296" width="280" height="76" rx="6" fill="#101114" stroke="#2b2d31"/>
+    <text x="672" y="328" fill="#94a3b8" font-size="13">threshold</text>
+    <text x="672" y="354" fill="#ffffff" font-size="18" font-weight="700">0.70</text>
+  </g>
+</svg>

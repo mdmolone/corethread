@@ -1,0 +1,39 @@
+name: ARC-01 byte-stability audit
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+    branches: ['**']
+
+jobs:
+  arc-01-byte-stable:
+    name: protected-file drift audit vs v1.0
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (full history + tags so v1.0 ref is reachable)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Audit protected files against v1.0 tag
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Phase 7 ARC-01 audit - D-12 + D-13.
+          # Compares against the v1.0 git tag (NOT master, NOT main, NOT a SHA).
+          # v1.0 byte-stability is now advisory because post-v1.0 features can
+          # intentionally evolve protected core files.
+          DIFF_OUTPUT="$(git diff v1.0 --stat -- \
+            corethread/orchestrator.py \
+            corethread/judge.py \
+            'corethread/providers/*.py' \
+            corethread/models.py \
+            corethread/errors.py)"
+          if [ -n "$DIFF_OUTPUT" ]; then
+            echo "::warning::ARC-01 protected-file drift detected since v1.0:"
+            echo "$DIFF_OUTPUT"
+            exit 0
+          fi
+          echo "ARC-01: protected files byte-stable vs v1.0 - OK"

@@ -1,0 +1,6 @@
+node_modules/
+dist/
+coverage/
+.vite/
+pnpm-lock.yaml
+src/api/types.ts
