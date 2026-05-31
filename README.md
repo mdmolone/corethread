@@ -90,11 +90,11 @@ curl http://localhost:8000/v1/chat/completions \
 
 CoreThread ships a local single-page UI for operating the router.
 
-![Trace view](docs/assets/traces.svg)
+![CoreThread trace view showing live route status, deep route timing, and recent request traces](docs/assets/screenshots/corethread-traces.png)
 
-![Stats view](docs/assets/stats.svg)
+![CoreThread stats view showing request counts, latency percentiles, confidence histogram, and pivot reasons](docs/assets/screenshots/corethread-stats.png)
 
-![Config view](docs/assets/config.svg)
+![CoreThread config view showing role profile selection, routing settings, and privacy controls](docs/assets/screenshots/corethread-config.png)
 
 ## Configuration
 

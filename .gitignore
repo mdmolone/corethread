@@ -12,6 +12,8 @@ outputs/
 .planning/
 *.log
 *.png
+!docs/assets/screenshots/
+!docs/assets/screenshots/*.png
 *.jpg
 *.jpeg
 *.webp
